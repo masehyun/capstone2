@@ -27,18 +27,16 @@
         <div class="masthead-content">
             <div class="container px-5">
                 <!-- 파일 업로드 폼 -->
-                <form method="POST" action="/upload" enctype="multipart/form-data">
-                    <h1 class="masthead-heading mb-0">동영상을 넣으면 피드백을 해줘요 (대충 써놓은거)</h1>
-                    <input type="file" id="video" name="video" accept="image/png, image/jpg" style="display: none;" />
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#" id="uploadButton">파일 선택</a>
-                </form>
+                <form action = "http://localhost:5000/upload" method = "POST"
+                enctype = "multipart/form-data">
+                <input  type = "file" name = "file" />
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                  </div>
+            </form>
             </div>
         </div>
     </header>
-    <script>
-        document.getElementById('uploadButton').addEventListener('click', function () {
-            document.getElementById('video').click();
-        });
-    </script>
+   
 </body>
 </html>
