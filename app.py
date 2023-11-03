@@ -30,7 +30,7 @@ def upload_file():
     if request.method=='POST':
         f=request.files['file']
         
-        f.save('C:/Users/SAMSUNG/Desktop/CAPS/uploads/'+f.filename)
+        f.save('./uploads/'+f.filename)
         return render_template('index3.html')
     else:
         return render_template('index2.html')
