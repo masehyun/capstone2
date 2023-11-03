@@ -26,21 +26,18 @@ def second_page():
 @app.route('/upload',methods=['GET','POST'])
 def video_analysis():
     if request.method=='POST':
-        console.log("sd")
-        # if 'file' not in request.files:
-        #     flash('No file part')
-        #     return redirect(request.url)
-        # file=request.files['video'] #html에서 보내는 이름
-        # if file.filename=='':
-        #     flash('no select file')
-        #     return redirect(request.url)
-        # if file:
-        #     print("sdkfjsldkfj")
-        #     file.save(os.path.join(app.config['UPLOAD_FOLDER'],file.filename))
-        #     a=model_f()
-            
-         
-        #     return render_template('index3.html')
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file=request.files['video'] #html에서 보내는 이름
+        if file.filename=='':
+            flash('no select file')
+            return redirect(request.url)
+        if file:
+            print("sdkfjsldkfj")
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'],file.filename))
+            a=model_f()
+            return render_template('index3.html')
 
 #마지막 페이지 점수,피드백 그리고 추가적으로 그래프
 @app.route('/third')
