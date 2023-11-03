@@ -1,7 +1,14 @@
 from random import randint
-a=list()
-for i in range(10):
-  a.insert(i,randint(1,100))
-  
-for i in range(10):
-  print(a[i],end='\n')
+
+
+def model_f():
+  a=list()
+  for i in range(7):  
+    a.insert(i,randint(1,100))
+  return a
+    
+# a=model_f()
+
+# for i in range(len(a)):
+#   print(a[i])    
+
