@@ -23,12 +23,14 @@
             </div>
         </nav>
         <!-- Header-->
-        <header class="masthead text-center text-white">
-            <div class="masthead-content">
-                <div class="container px-5">
+        <header class="masthead text-center text-white" style="padding: 150px;">
+            <div class="masthead-content" style="height: 180px">
+                <div class="container px-5 ">
+                    <p class="fs-2">
                     <h1 class="masthead-heading mb-0">인공지능 골프 자세교정</h1>
                     <h2 class="masthead-subheading mb-0">카메라만 있으면 충분해요😉</h2>
                     <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('second_page') }}">시작하기</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
+                    </p>
                 </div>
             </div>
             <div class="bg-circle-1 bg-circle"></div>
@@ -41,7 +43,8 @@
             <div class="container px-5">
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6 order-lg-2">
-                        <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/01.jpg" alt="..." /></div>
+                        <div class="p-5"><img class="img-thumbnail rounded-circle" src="{{ url_for('static', filename='assets/img/1.jpg') }}"
+                            style="width: 180px; height: 180px;" alt="사진적용안됌" /></div>
                     </div>
                     <div class="col-lg-6 order-lg-1">
                         <div class="p-5">
@@ -57,7 +60,8 @@
             <div class="container px-5">
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6">
-                        <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/02.jpg" alt="..." /></div>
+                        <div class="p-5"><img class="img-thumbnail rounded-circle" src="{{ url_for('static', filename='assets/img/2.jpg') }}"
+                            style="width: 180px; height: 180px;" alt="..." /></div>
                     </div>
                     <div class="col-lg-6">
                         <div class="p-5">
@@ -69,21 +73,7 @@
             </div>
         </section>
         <!-- Content section 3-->
-        <section>
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/03.jpg" alt="..." /></div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="p-5">
-                            <h2 class="display-4">Let there be rock!</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      
         <!-- Footer-->
         <footer class="py-5 bg-black">
             <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Your Website 2023</p></div>

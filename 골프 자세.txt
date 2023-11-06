@@ -1,0 +1,39 @@
+-초심자들은 7,8번으로 연습한데
+
+-골프의 기본자세:
+	*그립
+	*자세(뒷굼치 쪽으로 가있느냐 뻣뻣히 서있냐 앞쪽으로 쏠렸냐) 좋은예는 중심보다 살짝 앞(발가락쪽)
+	*방향
+ 
+-초보 연습 방법
+	*다리를 모으고 ~~~
+
+-스윙 자세
+	*어깨넓이의 자세
+	*공 위치는 왼발 뒷꿈치
+	*클럽과 내 몸의 거리 기준은 주먹 한개반
+	*오른쪽 겨드랑이를 살짝 붙인다
+	*
+
+박세리 3번째 영상 원포인트레슨 
+-잘 일어나는 스윙 문제
+	*왼쪽 어깨는 턱 밑으로, 틀리면 슬라이스난데
+	*골프채 각도(코킹(손목 꺽는거)은 안해도된데 자연적으로 된데) 기본적으로 테이크웨이 중요하ㄷ[
+	*
+
+	 <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/03.jpg" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Let there be rock!</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
