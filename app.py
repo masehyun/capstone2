@@ -1,13 +1,12 @@
 from flask import Flask,render_template,request,flash,redirect,url_for
 from flask_cors import CORS,cross_origin
 import os
-from werkzeug.utils import secure_filename
 from model import model_f
-
 app =Flask(__name__)
 cors = CORS(app)
 
-UPLOAD_FOLDER='/uploads'
+UPLOAD_FOLDER = '/videos'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 b=model_f()
 print(len(b))
@@ -25,15 +24,22 @@ def second_page():
     return render_template('index2.html') 
 
 #두번째 화면에서 업로드 버튼을 누를때
-@app.route('/upload',methods=['POST'])
-def upload_file():
+@app.route('/upload',methods=['GET','POST'])
+def video_analysis():
     if request.method=='POST':
-        f=request.files['file']
-        
-        f.save('./uploads/'+f.filename)
-        return render_template('index3.html')
-    else:
-        return render_template('index2.html')
+      
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file=request.files['video'] #html에서 보내는 이름
+        if file.filename=='':
+            flash('no select file')
+            return redirect(request.url)
+        if file:
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'],file.filename))
+            a=model_f()
+            return render_template('index3.html')
+
 #마지막 페이지 점수,피드백 그리고 추가적으로 그래프
 @app.route('/third')
 def func():
