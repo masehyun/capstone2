@@ -18,6 +18,10 @@ for i in range(len(b)):
 @app.route("/")
 def home():
     return render_template('index.html') 
+#세번째 페이지 태스트
+@app.route("/3")
+def test():
+    return render_template('index3.html')
 
 #두번째페이지를 렌더링
 @app.route("/second")
@@ -34,6 +38,7 @@ def upload_file():
         return render_template('index3.html')
     else:
         return render_template('index2.html')
+    
 #마지막 페이지 점수,피드백 그리고 추가적으로 그래프
 @app.route('/third')
 def func():
