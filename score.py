@@ -3,6 +3,14 @@
 # 각도를 기준으로 하니까 
 # dict score=>sc
 
+grade={'1':1,'w':2}
+for k,v in grade.items():
+  print(k,v,'🏌️') 
+
+
 def evaluate(**sc):
   feedback=list()
+  
+  
+
   
