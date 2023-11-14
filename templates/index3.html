@@ -126,6 +126,27 @@
       <button id="nextButton" onclick="showNextPosture()">Next</button>
     </div>
 
+    <ul>
+      {% for value in values %}
+      <li>{{ value }}</li>
+      <br />
+      {% endfor %} 각각 쓰는 법
+      <li>{{ values[0] }}</li>
+      <br />
+      <li>{{ values[1] }}</li>
+      <br />
+      <li>{{ values[2] }}</li>
+      <br />
+      <li>{{ values[3] }}</li>
+      <br />
+      <li>{{ values[4] }}</li>
+      <br />
+      <li>{{ values[5] }}</li>
+      <br />
+      <li>{{ values[6] }}</li>
+      <br />
+    </ul>
+
     <script>
       var currentIndex = 0;
       var postures = document.querySelectorAll(".posture");
