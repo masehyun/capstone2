@@ -1,25 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <header>hello</header>
-  <nav style="float: left">score</nav>
-  <ul>
-    {% for value in values %}
-    <li>{{ value }}</li> <br>
-    {% endfor %}
-    각각 쓰는 법
-    <li>{{ values[0] }}</li> <br>
-    <li>{{ values[1] }}</li> <br>
-    <li>{{ values[2] }}</li> <br>
-    <li>{{ values[3] }}</li> <br>
-    <li>{{ values[4] }}</li> <br>
-    <li>{{ values[5] }}</li> <br>
-    <li>{{ values[6] }}</li> <br>
-  </ul>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golf Posture Feedback</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+      }
+
+      section {
+        margin: 20px auto;
+        padding: 20px;
+        box-sizing: border-box;
+        position: relative;
+        height: 250px;
+        text-align: center;
+      }
+
+      .posture {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: inline-block;
+        width: 80%;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        cursor: pointer;
+      }
+
+      .posture.active {
+        opacity: 1;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        max-height: 200px;
+      }
+
+      .button-container {
+        margin: 20px auto;
+        text-align: center;
+      }
+
+      button {
+        display: inline-block;
+        cursor: pointer;
+        display: inline-block;
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #5d805e;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Golf Posture Feedback</header>
+    <section>
+      <div class="posture active">
+        <h2>Address</h2>
+        <img
+          src="{{ url_for('static', filename='assets/img/address.jpg') }}"
+          alt="Address Image"
+        />
+        <p>어드레스 자세 피드백</p>
+      </div>
+
+      <div class="posture">
+        <h2>Takeaway</h2>
+        <img
+          src="{{ url_for('static', filename='assets/img/takeaway.jpg') }}"
+          alt="Takeaway Image"
+        />
+        <p>테이크어웨이 자세 피드백</p>
+      </div>
+
+      <div class="posture">
+        <h2>Backswing Top</h2>
+        <img
+          src="{{ url_for('static', filename='assets/img/backswingtop.jpg') }}"
+          alt="Backswing Image"
+        />
+        <p>백스윙 탑 자세 피드백</p>
+      </div>
+
+      <div class="posture">
+        <h2>Impact</h2>
+        <img
+          src="{{ url_for('static', filename='assets/img/impact.jpg') }}"
+          alt="Impact Image"
+        />
+        <p>임팩트 자세 피드백</p>
+      </div>
+
+      <div class="posture">
+        <h2>Finish</h2>
+        <img
+          src="{{ url_for('static', filename='assets/img/finish.jpg') }}"
+          alt="Finish Image"
+        />
+        <p>피니시 자세 피드백</p>
+      </div>
+    </section>
+
+    <div class="button-container">
+      <button id="nextButton" onclick="showNextPosture()">Next</button>
+    </div>
+
+    <script>
+      var currentIndex = 0;
+      var postures = document.querySelectorAll(".posture");
+
+      function showNextPosture() {
+        postures[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % postures.length;
+        postures[currentIndex].classList.add("active");
+      }
+    </script>
+  </body>
 </html>
