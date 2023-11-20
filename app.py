@@ -127,8 +127,16 @@ def upload_file():
             print(comment[i])
         
         #id를 활용해서(로그인할때 id받기) 데이터베이스에서 이전 코멘트 불러오기
-        id=20 
-        x=list()
+        user_id=1
+        xcomment=list()
+        SQL=f"SELECT * FROM golf_data WHERE id={user_id}"
+        cursor.execute(SQL)
+        x=cursor.fetchone()
+        if x:
+            for i in range(7):
+                print(x[i])
+        else:
+            print(f"유저 아이디 {user_id} 없음")    
         
         #현재 데이터로 바꿔주기
         
