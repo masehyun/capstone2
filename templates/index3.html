@@ -3,7 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Golf Posture Feedback</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -46,8 +57,8 @@
 
       img {
         max-width: 100%;
-        height: auto;
-        max-height: 200px;
+        height: 330px;
+        max-height: 350px;
       }
 
       .comment-container {
@@ -86,8 +97,14 @@
       }
     </style>
   </head>
-  <body>
-    <header>Golf Posture Feedback</header>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container px-5">
+            <a class="navbar-brand navbar- " href="#page-top">Golf Posture Feedback</a>
+        </div>
+    </nav>
+    <header class="masthead text-center text-black" >
     <section>
       <div class="posture active">
         <h2>Address</h2>
@@ -95,6 +112,7 @@
           src="{{ url_for('static', filename='assets/img/address.jpg') }}"
           alt="Address Image"
         />
+        <br>
         <p>{{ values[0] }}</p>
       </div>
 
@@ -104,6 +122,7 @@
           src="{{ url_for('static', filename='assets/img/takeaway.jpg') }}"
           alt="Takeaway Image"
         />
+        <br>
         <p>{{ values[1] }}</p>
         <p>{{ values[2] }}</p>
       </div>
@@ -114,6 +133,7 @@
           src="{{ url_for('static', filename='assets/img/backswingtop.jpg') }}"
           alt="Backswing Image"
         />
+        <br>
         <p>{{ values[3] }}</p>
         <p>{{ values[4] }}</p>
       </div>
@@ -124,6 +144,7 @@
           src="{{ url_for('static', filename='assets/img/impact.jpg') }}"
           alt="Impact Image"
         />
+        <br>
         <p>{{ values[5] }}</p>
       </div>
 
@@ -133,6 +154,7 @@
           src="{{ url_for('static', filename='assets/img/finish.jpg') }}"
           alt="Finish Image"
         />
+        <br>
         <p>{{ values[6] }}</p>
       </div>
     </section>
@@ -142,11 +164,12 @@
         {% for value in values %} {% endfor %}
       </ul>
     </div>
-
+    <br></br>
+    <br></br>
     <div class="button-container">
       <button id="nextButton" onclick="showNextPosture()">Next</button>
     </div>
-
+  </header>
     <script>
       var currentIndex = 0;
       var postures = document.querySelectorAll(".posture");
