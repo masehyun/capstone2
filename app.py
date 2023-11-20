@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,flash,redirect,url_for
+from flask import Flask,render_template,request,flash,redirect,url_for,session
 from flask_cors import CORS,cross_origin
 import os
 from werkzeug.utils import secure_filename
@@ -7,16 +7,20 @@ import pymysql
 
 db=pymysql.connect(
     host='localhost',
-    port='3306',
+    port=3306,
     user='root',
     passwd='1234',
+    db='golf',
     charset='utf8')
 cursor=db.cursor()
 
 app =Flask(__name__)
 cors = CORS(app)
+app.secret_key = 'your_secret_key'
 
 UPLOAD_FOLDER='/uploads'
+
+
 
 b=model_f()
 print(len(b))
@@ -33,8 +37,11 @@ def test():
     return render_template('index3.html')
 
 #두번째페이지를 렌더링
-@app.route("/second")
-def second_page():
+@app.route("/login")
+def second_page():#id 받기
+    user_id=request.args.get('userid')
+    session['user_id'] = user_id
+    print('user_ID=',user_id)
     return render_template('index2.html') 
 
 #두번째 화면에서 업로드 버튼을 누를때
@@ -53,7 +60,7 @@ def upload_file():
         comment=list() 
         
         #점수 리스트.
-        sc=list(20,40,60,80,90,100,10)
+        sc=list[20,40,60,80,90,100,10]
         
         #코멘트 알고리즘, 점수는 50점일때 각이 일치하는걸 가정, 오차는 5
         for key,value in grade.items():
@@ -122,27 +129,62 @@ def upload_file():
             # 백스윙 두개(왼쪽 어깨와 머리사이 거리,손 위치)
             # 임팩트 한개
             # 피니시 한개
-            
+        user_id = session.get('user_id', None)
+        print('user_ID=',user_id)
+        
         for i in range(7):
             print(comment[i])
         
-        #id를 활용해서(로그인할때 id받기) 데이터베이스에서 이전 코멘트 불러오기
-        user_id=1
+        # 데이터베이스에서 이전 코멘트 불러오기
         xcomment=list()
-        SQL=f"SELECT * FROM golf_data WHERE id={user_id}"
+        SQL=f"SELECT * FROM golf_data WHERE id={user_id};"
         cursor.execute(SQL)
         x=cursor.fetchone()
+        
+        # 기존 데이터 있으면 새로 갱신
         if x:
+            print("아이디 존재,갱신")
             for i in range(7):
                 print(x[i])
+            SQL=f"""UPDATE golf_data SET
+            address='{comment[0]}',
+            takeaway='{comment[1]}',
+            backswing='{comment[2]}',
+            backswing_top='{comment[3]}',
+            impact='{comment[4]}',
+            impact_knee='{comment[5]}',
+            finish='{comment[6]}'
+            WHERE id={user_id}"""
+            print(SQL)
+            cursor.execute(SQL)
+            db.commit()
+            db.close()
+            
+            
+        #없으면 새로 추가
         else:
-            print(f"유저 아이디 {user_id} 없음")    
+            print(f"유저 아이디 {user_id} 없음")
+            SQL=f"""INSERT INTO golf_data (id,address,
+            takeaway,backswing,backswing_top,impact,
+            impact_knee,finish) VALUES({user_id},'{comment[0]}',
+            '{comment[1]}','{comment[2]}','{comment[3]}',
+            '{comment[4]}','{comment[5]}','{comment[6]}')
+            ;"""
+            print(SQL)
+            cursor.execute(SQL)
+            db.commit()
+            db.close()
         
-        #현재 데이터로 바꿔주기
+        if x:
+            xcomment=list(x)
+            
+            
+        else:
+            xcomment=['데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음']
         
         
         #딕셔너리 값을 html로 넘김
-        return render_template('index3.html',values=comment,scores=sc)
+        return render_template('index3.html',values=comment,scores=sc,xvalues=xcomment)
     else:
         return render_template('index2.html')
     

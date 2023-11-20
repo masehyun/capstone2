@@ -39,3 +39,5 @@
         </section>ㅇㅇ
 
         ㄴㅇㄹㄴㅇㄹㄴㄹ
+         <h2 class="masthead-subheading mb-0"></h2>
+                    <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('second_page') }}">시작하기</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->

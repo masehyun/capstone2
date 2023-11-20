@@ -27,29 +27,45 @@
             <div class="masthead-content" style="height: 180px">
                 <div class="container px-5 ">
                     <p class="fs-2">
-                    <h1 class="masthead-heading mb-0">AI 골프 자세교정🏌️</h1>
-                    <h2 class="masthead-subheading mb-0"></h2>
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('second_page') }}">시작하기</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
-                    </p>
+                    <h1 class="masthead-heading mb-0">AI 골프 자세교정🏌️</h1><br><br>
+                   
+                    <form action="http://localhost:5000/login">
+                        <div class="mb-2 row">
+                            <label for="userid" class="col-sm-1 col-form-label">ID:</label><br>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" name="userid" style="width: 100px;" />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="password" class="col-sm-1 col-form-label">PW:</label><br>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="password" name="password" style="width: 100px;" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">제출</button>
+                    </form>
+                </p>
                 </div>
             </div>
             <div class="bg-circle-1 bg-circle"></div>
             <div class="bg-circle-2 bg-circle"></div>
-            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></v>
             <div class="bg-circle-4 bg-circle"></div>
         </header>
         <!-- Content section 1-->
         <section id="scroll">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="p-5"><img class="img-thumbnail rounded-circle" src="{{ url_for('static', filename='assets/img/1.jpg') }}"
-                            style="width: 180px; height: 180px;" alt="사진적용안됌" /></div>
-                    </div>
                     <div class="col-lg-6 order-lg-1">
-                        <div class="p-5">
+                        <div class="p-1">
                             <h2 class="display-4">저희와 함께 골프를 배워봐요😊</h2>
                             <p>골프 코치 받는게 비싸고 어려우시죠?</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5">
+                            <img class="img-thumbnail rounded-circle" src="{{ url_for('static', filename='assets/img/1.jpg') }}"
+                                style="width: 180px; height: 180px;" alt="사진적용안됌" />
                         </div>
                     </div>
                 </div>
@@ -60,8 +76,10 @@
             <div class="container px-5">
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6">
-                        <div class="p-5"><img class="img-thumbnail rounded-circle" src="{{ url_for('static', filename='assets/img/2.jpg') }}"
-                            style="width: 180px; height: 180px;" alt="..." /></div>
+                        <div class="p-5">
+                            <img class="img-thumbnail rounded-circle" src="{{ url_for('static', filename='assets/img/2.jpg') }}"
+                                style="width: 180px; height: 180px;" alt="..." />
+                        </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="p-5">
