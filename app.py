@@ -176,8 +176,9 @@ def upload_file():
             db.close()
         
         if x:
-            xcomment=list(x)
-            
+            xcomment=list(x) #x의 0번째 index가 id 가 나오므로 0번째 인덱스 제거
+            xcomment.pop(0)
+            print(xcomment)
             
         else:
             xcomment=['데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음']
