@@ -55,12 +55,6 @@
         opacity: 1;
       }
 
-      img {
-        max-width: 100%;
-        height: 330px;
-        max-height: 350px;
-      }
-
       .comment-container {
         margin-top: 20px;
         text-align: left;
@@ -108,21 +102,31 @@
     <section>
       <div class="posture active">
         <h2>Address</h2>
+        <br>
+        <br>
+        <br>
+        <br>
         <img
           src="{{ url_for('static', filename='assets/img/address.jpg') }}"
           alt="Address Image"
+          style = "float : left;margin-left:300px;height:400px;"
         />
         <br>
-        <p>{{ xvalues[0] }}</p>
+        <p><span style="border: 5px double #DCDCDC; padding: 0.4em;font-size: 25px;color: firebrick;">이전 피드백:  </span><span style="border-radius: 5em; padding: 0.5em; background: #dcf1fb;font-size:25px">  {{ xvalues[0] }}</span> </p>
         <br>
-        <p>{{ values[0] }}</p>
+        <p><span style="border: 5px double #DCDCDC; padding: 0.4em;font-size: 25px;color: firebrick;">현재 피드백:  </span><span style="border-radius: 5em; padding: 0.5em; background: #dcf1fb;font-size:25px">  {{ values[0] }}</span> </p>
       </div>
 
       <div class="posture">
         <h2>Takeaway</h2>
+        <br>
+        <br>
+        <br>
+        <br>
         <img
           src="{{ url_for('static', filename='assets/img/takeaway.jpg') }}"
           alt="Takeaway Image"
+          style = "float : left;margin-left:300px;height:400px;"
         />
         <br>
         <p>{{ xvalues[1] }}</p>
@@ -134,9 +138,14 @@
 
       <div class="posture">
         <h2>Backswing Top</h2>
+        <br>
+        <br>
+        <br>
+        <br>
         <img
           src="{{ url_for('static', filename='assets/img/backswingtop.jpg') }}"
           alt="Backswing Image"
+          style = "float : left;margin-left:300px;height:400px;"
         />
         <br>
         <p>{{ xvalues[3] }}</p>
@@ -148,9 +157,14 @@
 
       <div class="posture">
         <h2>Impact</h2>
+        <br>
+        <br>
+        <br>
+        <br>
         <img
           src="{{ url_for('static', filename='assets/img/impact.jpg') }}"
           alt="Impact Image"
+          style = "float : left;margin-left:300px;height:400px;"
         />
         <br>
         <p>{{ xvalues[5] }}</p>
@@ -160,9 +174,14 @@
 
       <div class="posture">
         <h2>Finish</h2>
+        <br>
+        <br>
+        <br>
+        <br>
         <img
           src="{{ url_for('static', filename='assets/img/finish.jpg') }}"
           alt="Finish Image"
+          style = "float : left;margin-left:300px;height:400px;"
         />
         <br>
         <p>{{ xvalues[6] }}</p>
