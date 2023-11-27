@@ -60,10 +60,13 @@ def upload_file():
         comment=list() 
 
         #점수 리스트.
-        sc=list[20,40,60,80,90,100,10]
+        sc=[20,40,60,80,90,100,10]
         
-        #종합스코어
-        cnt=0
+        #회차별 종합 스코어 저장값 xtotal 초기화
+        xtotal=[0,0,0,0,0]
+        
+        #종합스코어 초기화
+        total=0
         
         #코멘트 알고리즘, 점수는 50점일때 각이 일치하는걸 가정, 오차는 5
         for key,value in grade.items():
@@ -72,50 +75,60 @@ def upload_file():
                     comment.append('발의 각도가 좁아요 어깨만큼 넓혀주세요ㅜㅜ.')
                 elif(value==1 ):
                     comment.append('어드레스의 발 사이의 거리가 좋아요^^.')
-                    cnt+=1
+                    total+=1
                 elif(value==0):
                     comment.append('발 사이의 거리가 너무 멀어요ㅜㅜ.')
+          
                     
             elif(key=='takeback'): #채 수평(손목좌표)과 팔 쭉 펴진지 나중에
-                if(value==1):
+                if(value>=165):
                     comment.append('테이크 어웨이 구간에서 팔이 잘 펴졌어요ㅎㅎ')
-                    cnt+=1
+                    total+=1
                 elif(value<165):
                     comment.append('테이크 어웨이 구간에서 팔을 더 펴주세요ㅜㅜ')
-                   
+                elif(value==-1):
+                    comment.append(' ')  
                  
             #뱌ㅐㄱ스윙
             elif(key=='backswing'): 
                 
-                if(value==1):
+                if(value>=155):
                     comment.append('백스윙 구간에서 팔이 잘 펴졌어요ㅎㅎ')
-                    cnt+=1
+                    total+=1
                 elif(value<155):
                     comment.append('백스윙 구간에서 팔을 더 펴주세요ㅜㅜ')
+                elif(value==-1):
+                    comment.append(' ')    
                    
             elif(key=='top'): #백스윙에서 팔 위치
                 if(value==1):
                     comment.append('볼을 끝까지 보는 시선 좋아요^^.')
-                    cnt+=1
+                    total+=1
                 elif(value==0):
                     comment.append('임팩트에서 볼을 끝까지 봐야해요!.')
+                elif(value==-1):
+                    comment.append(' ')    
                     
             #임팩트
             #임팩트 시선
             elif(key=='impact_eye'):
                 if(value==1):
                     comment.append('임팩트 시 시선처리 좋아요!')
-                    cnt+=1
+                    total+=1
                 elif(value==0):
                     comment.append('임팩트때 공을 끝까지 봐주세요!')
+                elif(value==-1):
+                    comment.append(' ')   
             
             #임펙트 무릎
             elif(key=='impact_knee'):
                 if(value==1):
                     comment.append('좋아요!')
-                    cnt+=1
+                    total+=1
                 elif(value==0):
-                    comment.append('임패트 시 무릎이 붙게 해주세요!')           
+                    comment.append('임패트 시 무릎이 붙게 해주세요!')
+                elif(value==-1):
+                    comment.append(' ')           
                     
             #임펙트 발거리
             elif(key=='impact_foot'):
@@ -123,15 +136,15 @@ def upload_file():
                     comment.append('발의 각도가 좁아요 어깨만큼 넓혀주세요ㅜㅜ.')
                 elif(value==1):
                     comment.append('어드레스의 발 사이의 거리가 좋아요^^.')
-                    cnt+=1
+                    total+=1
                 elif(value==0):
                     comment.append('발 사이의 거리가 너무 멀어요ㅜㅜ.')
         #넘기는 리스트 comment의 값은 총 7개
             # 어드레스 한개
-            # 테이크어웨이 두개(채가 지면과 평행,팔 쭉펴주기)
-            # 백스윙 두개(왼쪽 어깨와 머리사이 거리,손 위치)
-            # 임팩트 한개
-            # 피니시 한개
+            # 테이크어웨이 1개
+            # 백스윙,백스윙탑 두개
+            # 임팩트 3개
+            
         user_id = session.get('user_id', None)
         print('user_ID=',user_id)
         
@@ -140,55 +153,64 @@ def upload_file():
         
         # 데이터베이스에서 이전 코멘트 불러오기
         xcomment=list()
-        SQL=f"SELECT * FROM golf_data WHERE id={user_id};"
+        SQL=f"""SELECT id FROM golf_data WHERE id={user_id};"""
+        print(SQL)
         cursor.execute(SQL)
         x=cursor.fetchone()
         
         # 기존 데이터 있으면 새로 갱신
         if x:
             print("아이디 존재,갱신")
-            for i in range(7):
-                print(x[i])
-            SQL=f"""UPDATE golf_data SET
-            address='{comment[0]}',
-            takeaway='{comment[1]}',
-            backswing='{comment[2]}',
-            backswing_top='{comment[3]}',
-            impact='{comment[4]}',
-            impact_knee='{comment[5]}',
-            finish='{comment[6]}'
-            WHERE id={user_id}"""
+            SQL=f"""
+            INSERT INTO id{user_id} (total) VALUES({total});"""
             print(SQL)
             cursor.execute(SQL)
             db.commit()
-            db.close()
+            
             
             
         #없으면 새로 추가
         else:
             print(f"유저 아이디 {user_id} 없음")
-            SQL=f"""INSERT INTO golf_data (id,address,
-            takeaway,backswing,backswing_top,impact,
-            impact_knee,finish) VALUES({user_id},'{comment[0]}',
-            '{comment[1]}','{comment[2]}','{comment[3]}',
-            '{comment[4]}','{comment[5]}','{comment[6]}')
-            ;"""
+            SQL=f"""CREATE TABLE id{user_id}(
+              cnt int AUTO_INCREMENT PRIMARY KEY,
+              total int
+            );"""
+            print(SQL)
+            cursor.execute(SQL)
+            SQL=f"""INSERT INTO id{user_id}(total) VALUES({total});"""
+            print(SQL)
+            cursor.execute(SQL)
+            SQL=f"""INSERT INTO golf_data(id) VALUES({user_id});"""
             print(SQL)
             cursor.execute(SQL)
             db.commit()
-            db.close()
+           
         
-        if x:
-            xcomment=list(x) #x의 0번째 index가 id 가 나오므로 0번째 인덱스 제거
-            xcomment.pop(0)
-            print(xcomment)
-            
-        else:
-            xcomment=['데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음','데이터 없음']
+  
+        SQL=f"""SELECT total FROM id{user_id} ORDER BY cnt DESC;"""
+        cursor.execute(SQL)
+        y=cursor.fetchmany(5)
+        db.commit()
+        db.close()
+        
+       
+        
+        if y:
+           ly=list(y)
+           print(ly[0])
+           
+           for i in range(len(ly)):
+               
+                print(ly[i][0])
+                xtotal[len(ly)-i-1]=ly[i][0]
+                
+           print(xtotal)  
+        
         
         
         #딕셔너리 값을 html로 넘김
-        return render_template('index3.html',values=comment,scores=sc,xvalues=xcomment)
+        return render_template('index3.html',values=comment,xvalues=xtotal)
     else:
         return render_template('index2.html')
     
