@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Golf Posture Feedback</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+    <style>
+        /* 전체 컨테이너 스타일 */
+        .container {
+            display: flex;
+        }
+
+        /* 동영상 영역 스타일 */
+        .video-container {
+            flex: 1; /* 동영상 영역이 가변적으로 늘어남 */
+            margin-right:10px;
+        }
+
+        /* 그래프 영역 스타일 */
+        .chart-container {
+            flex: 1; /* 그래프 영역이 가변적으로 늘어남 */
+            padding: 20px; /* 그래프 영역에 여백 추가 */
+        }
+    </style>
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container px-5">
+        <a class="navbar-brand navbar- " href="#page-top">Golf Posture Feedback</a>
+    </div>
+  </nav>
+  <header class="masthead text-center text-black" >
+    <div class="container">
+        <!-- 동영상 영역 -->
+        <div class="video-container">
+            <!-- 동영상을 여기에 추가하세요 -->
+            <iframe width="650" height="350" src="{{ url_for('static', filename='assets/img/사용자영상.mp4') }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        <!-- 그래프 영역 -->
+        <div class="chart-container">
+            <!-- 그래프를 여기에 추가하세요 -->
+            <canvas id="myLineChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+  </header>
+  <section>
+    <div class="masthead-content" style="text-align:center;">
+      
+        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('third_page') }}">총점 보기</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
+        </p>
+    </div>
+        </div>
+</section>
+
+    <script>
+        // 그래프 데이터 및 옵션
+        var data = {
+            labels: ['1회차', '2회차', '3회차','4회차','5회차'],
+            datasets: [{
+                label: '현재까지 총점',
+                data: [20, 40, 60,80,100],<!-- 여기에 값 받아아야함-->
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 1,
+                pointRadius: 3,
+                pointBackgroundColor: 'rgb(75, 192, 192)',
+            }]
+        };
+
+        var options = {
+            scales: {
+              y: {
+                beginAtZero: true,
+                max : 100,
+                ticks: {
+                stepSize: 20,
+                }
+                }
+            },
+          maintainAspectRatio: false, // 비율 유지 비활성화
+          plugins: {
+              legend: {
+                poistion:'right'
+              }
+          }
+          };
+
+        // 캔버스 요소에 꺾은선 그래프 생성
+        var ctx = document.getElementById('myLineChart').getContext('2d');
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+    </script>
+</body>
+</html>
