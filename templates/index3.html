@@ -32,6 +32,17 @@
             flex: 1; /* 그래프 영역이 가변적으로 늘어남 */
             padding: 20px; /* 그래프 영역에 여백 추가 */
         }
+        #accuracyLabel {
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 24px; /* 텍스트 크기 조절 */
+        color: rgb(75, 192, 192); /* 텍스트 색상 지정 */
+      }
+      #acuuracyComment {
+        text-align: center;
+      }
+
     </style>
 </head>
 <body id="page-top">
@@ -55,6 +66,8 @@
             
         </div>
     </div>
+    <div id="accuracyLabel"></div>
+    <div id="accuracyComment"></div>
   </header>
   <section>
     <div class="masthead-content" style="text-align:center;">
@@ -105,6 +118,17 @@
             data: data,
             options: options
         });
+        var accuracyLabelElement = document.getElementById("accuracyLabel");
+      var correctAnswers = 5; // 맞춘 개수
+      var totalQuestions = 7; // 전체 수
+      accuracyLabelElement.textContent =
+        "정확도: " + correctAnswers + "/" + totalQuestions;
+      accuracyComment.textContent =
+        totalQuestions +
+        "개 동작 중 " +
+        correctAnswers +
+        "개 동작이 평가기준에 적합합니다.";
+
     </script>
 </body>
 </html>
