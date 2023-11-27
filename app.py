@@ -36,6 +36,12 @@ def home():
 def test():
     return render_template('index3.html')
 
+@app.route("/fourth")
+def fourth_page():
+    return render_template('index4.html')
+@app.route("/third")
+def third_page():
+    return render_template('index3.html')
 #두번째페이지를 렌더링
 @app.route("/login")
 def second_page():#id 받기
