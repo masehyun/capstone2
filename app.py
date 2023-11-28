@@ -20,7 +20,7 @@ app.secret_key = 'your_secret_key'
 
 UPLOAD_FOLDER='/uploads'
 
-
+global_user_id=0
 
 b=model_f()
 print(len(b))
@@ -55,8 +55,13 @@ def second_page():#id 받기
 def upload_file():
     if request.method=='POST':
         f=request.files['file']
+        print(f.filename)
         
-        f.save('./uploads/'+f.filename)
+        user_id = session.get('user_id', None)
+        print('user_ID=',user_id)
+        
+        f.save('./static/assets/img/'+user_id+f.filename)
+        file_name=user_id+f.filename
         
         #딕셔너리 정의(모델에서 딕셔너리 형태로 받을예정)
         grade=dict()
@@ -154,8 +159,7 @@ def upload_file():
             # 백스윙,백스윙탑 두개
             # 임팩트 3개
             
-        user_id = session.get('user_id', None)
-        print('user_ID=',user_id)
+       
         
         for i in range(7):
             print(comment[i])
@@ -220,7 +224,7 @@ def upload_file():
         
         
         #딕셔너리 값을 html로 넘김
-        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn)
+        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn,file_name=file_name)
     else:
         return render_template('index2.html')
     
