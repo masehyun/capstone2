@@ -78,10 +78,10 @@
     <script>
         // 그래프 데이터 및 옵션
         var data = {
-            labels: ['1회차', '2회차', '3회차','4회차','5회차'],
+            labels: ['{{tryn[0]}}회차','{{tryn[1]}}회차','{{tryn[2]}}회차','{{tryn[3]}}회차','{{tryn[4]}}회차'],
             datasets: [{
                 label: '현재까지 총점',
-                data: [20, 40, 60,80,100],<!-- 여기에 값 받아아야함-->
+                data: [{{xvalues[0]}},{{xvalues[1]}},{{xvalues[2]}},{{xvalues[3]}},{{xvalues[4]}}],<!-- 여기에 값 받아아야함-->
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 borderWidth: 1,

@@ -71,6 +71,9 @@ def upload_file():
         #회차별 종합 스코어 저장값 xtotal 초기화
         xtotal=[0,0,0,0,0]
         
+        #회차 리스트
+        tryn=[0,0,0,0,0]
+        
         #종합스코어 초기화
         total=0
         
@@ -194,7 +197,7 @@ def upload_file():
            
         
   
-        SQL=f"""SELECT total FROM id{user_id} ORDER BY cnt DESC;"""
+        SQL=f"""SELECT * FROM id{user_id} ORDER BY cnt DESC;"""
         cursor.execute(SQL)
         y=cursor.fetchmany(5)
         db.commit()
@@ -209,14 +212,15 @@ def upload_file():
            for i in range(len(ly)):
                
                 print(ly[i][0])
-                xtotal[len(ly)-i-1]=ly[i][0]
-                
-           print(xtotal)  
+                xtotal[len(ly)-i-1]=ly[i][1]
+                tryn[len(ly)-i-1]=ly[i][0]
+           print(xtotal)
+           print(tryn)  
         
         
         
         #딕셔너리 값을 html로 넘김
-        return render_template('index3.html',values=comment,xvalues=xtotal)
+        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn)
     else:
         return render_template('index2.html')
     
