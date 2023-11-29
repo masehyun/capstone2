@@ -75,13 +75,21 @@
         </div>
     </div>
   </header>
+  <section>
+    <div class="masthead-content" style="text-align:center;">
+      
+        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('fourth_page') }}">총점 보기</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
+        </p>
+    </div>
+        </div>
+</section>
     <script>
         // 그래프 데이터 및 옵션
         var data = {
             labels: ['{{tryn[0]}}회차','{{tryn[1]}}회차','{{tryn[2]}}회차','{{tryn[3]}}회차','{{tryn[4]}}회차'],
             datasets: [{
                 label: '현재까지 총점',
-                data: [{{xvalues[0]}},{{xvalues[1]}},{{xvalues[2]}},{{xvalues[3]}},{{xvalues[4]}}],<!-- 여기에 값 받아아야함-->
+                data: ['{{xvalues[0]}}','{{xvalues[1]}}','{{xvalues[2]}}','{{xvalues[3]}}','{{xvalues[4]}}'],<!-- 여기에 값 받아아야함-->
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 borderWidth: 1,
