@@ -61,7 +61,7 @@ def upload_file():
         
         #딕셔너리 정의(모델에서 딕셔너리 형태로 받을예정)
         grade=dict()
-        grade={'address':1,'takeback':174,'backswing':170,'top':1,'impact_eye':-1,'impact_knee':1,'impact_foot':1}
+        grade={'address':1,'takeback':170,'backswing':175,'top':1,'impact_eye':1,'impact_knee':1,'impact_foot':1}
         
         #코멘트 리스트. 나중에 웹으로 값 전송
         comment=list() 
