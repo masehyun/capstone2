@@ -55,6 +55,28 @@
       #acuuracyComment {
         text-align: center;
       }
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .btn-primary {
+        flex: 1;
+        max-width: 300px; /* 최대 너비 설정 */
+        font-size: 14px; /* 폰트 크기 조절 */
+        margin-right: 10px; /* 오른쪽 여백 추가 */
+      }
+      #accuracyLabel {
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 24px; /* 텍스트 크기 조절 */
+        color: rgb(75, 192, 192); /* 텍스트 색상 지정 */
+      }
+      #acuuracyComment {
+        text-align: center;
+      }
     </style>
   </head>
   <body id="page-top">
@@ -93,20 +115,17 @@
         </div>
     </div>
     <div id="accuracyLabel"></div>
+
   </header>
-  <section>
-    <div class="masthead-content" style="text-align:center;">
-      
-        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('fifth_page') }}">다음자세 피드백</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
-        </p>
-    </div>
-        </div>
-</section>
+  <div class="btn-container">
+    <a class="btn btn-primary btn-xl rounded-pill" href="{{ url_for('fourth_page') }}">이전자세 피드백</a>
+    <a class="btn btn-primary btn-xl rounded-pill" href="{{ url_for('fourth_page') }}">다음자세 피드백</a>
+  </div>
 
 <script>
-  var accuracyLabelElement = document.getElementById("accuracyLabel");
-accuracyLabelElement.textContent =
-  "Address: " + "{{values[0]}}";
-</script>
+      var accuracyLabelElement = document.getElementById("accuracyLabel");
+    accuracyLabelElement.textContent =
+      "Takeback: " + "{{values[1]}}";
+    </script>
   </body>
 </html>

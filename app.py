@@ -37,6 +37,9 @@ def fourth_page():
 @app.route("/third")
 def third_page():
     return render_template('index3.html',xvalues=xtotal,tryn=tryn,file_name=file_name)
+@app.route("/fifth")
+def fifth_page():
+    return render_template('index5.html',file_name=file_name,values=comment)
 #두번째페이지를 렌더링
 @app.route("/login")
 def second_page():#id 받기

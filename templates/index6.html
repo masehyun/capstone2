@@ -93,20 +93,25 @@
         </div>
     </div>
     <div id="accuracyLabel"></div>
+    <div id="accuracyComment"></div>
   </header>
   <section>
     <div class="masthead-content" style="text-align:center;">
       
-        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('fifth_page') }}">다음자세 피드백</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
+        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('fourth_page') }}">이전자세 피드백</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
+        </p>
+    </div>
+        </div>
+</section>
+  <section>
+    <div class="masthead-content" style="text-align:center;">
+      
+        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('fourth_page') }}">다음자세 피드백</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
         </p>
     </div>
         </div>
 </section>
 
-<script>
-  var accuracyLabelElement = document.getElementById("accuracyLabel");
-accuracyLabelElement.textContent =
-  "Address: " + "{{values[0]}}";
-</script>
+
   </body>
 </html>
