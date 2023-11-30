@@ -45,65 +45,70 @@
         <!-- 동영상 영역 -->
         <div class="video-container">
             <!-- 동영상을 여기에 추가하세요 -->
-            <iframe width="650" height="350" src="{{ url_for('static', filename='assets/img/사용자영상.mp4') }}" frameborder="0" allowfullscreen></iframe>
-        </div>
+            <iframe
+              width="650"
+              height="350"
+              src="{{ url_for('static', filename='assets/img/'+file_name) }}"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
         
-        <!-- 그래프 영역 -->
-        <div class="chart-container">
-            <!-- 그래프를 여기에 추가하세요 -->
-            <canvas id="myLineChart" width="400" height="200"></canvas>
-        </div>
-    </div>
+          <style type="text/css">
+            .tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+            .tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:2px;color:#444;
+              font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+            .tg th{background-color:#95730f;border-color:#9ABAD9;border-style:solid;border-width:2px;color:#fff;
+              font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+            .tg .tg-2ksa{border-color:#343434;color:#333333;font-family:Impact, Charcoal, sans-serif !important;text-align:left;
+              vertical-align:top}
+            </style>
+            <table class="tg"width="600" height="200">
+            <thead>
+              <tr>
+                <th class="tg-2ksa"width="50">구분</th>
+                <th class="tg-2ksa" colspan="5">Feedback</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-2ksa"width="50">Address</td>
+                <td class="tg-2ksa" colspan="5">{{values[0]}}</td>
+              </tr>
+              <tr>
+                <td class="tg-2ksa"width="50">Take Back</td>
+                <td class="tg-2ksa" colspan="5">{{values[1]}}</td>
+              </tr>
+              <tr>
+                <td class="tg-2ksa"width="50">Backswing</td>
+                <td class="tg-2ksa" colspan="5">{{values[2]}}</td>
+              </tr>
+              <tr>
+                <td class="tg-2ksa"width="50">Top</td>
+                <td class="tg-2ksa" colspan="5">{{values[3]}}</td>
+              </tr>
+              <tr>
+                <td class="tg-2ksa"width="50">Impact_eye</td>
+                <td class="tg-2ksa" colspan="5">{{values[4]}}</td>
+              </tr>
+              <tr>
+                <td class="tg-2ksa"width="50">Impact_knee</td>
+                <td class="tg-2ksa" colspan="5">{{values[5]}}</td>
+              </tr>
+              <tr>
+                <td class="tg-2ksa"width="50">Impact_foot</td>
+                <td class="tg-2ksa" colspan="5">{{values[6]}}</td>
+              </tr>
+            </tbody>
+            </table>
   </header>
   <section>
     <div class="masthead-content" style="text-align:center;">
       
-        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('third_page') }}">총점 보기</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
+        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('third_page') }}">그래프 보기</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
         </p>
     </div>
         </div>
 </section>
-
-    <script>
-        // 그래프 데이터 및 옵션
-        var data = {
-            labels: ['1회차', '2회차', '3회차','4회차','5회차'],
-            datasets: [{
-                label: '현재까지 총점',
-                data: [20, 40, 60,80,100],<!-- 여기에 값 받아아야함-->
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                borderWidth: 1,
-                pointRadius: 3,
-                pointBackgroundColor: 'rgb(75, 192, 192)',
-            }]
-        };
-
-        var options = {
-            scales: {
-              y: {
-                beginAtZero: true,
-                max : 100,
-                ticks: {
-                stepSize: 20,
-                }
-                }
-            },
-          maintainAspectRatio: false, // 비율 유지 비활성화
-          plugins: {
-              legend: {
-                poistion:'right'
-              }
-          }
-          };
-
-        // 캔버스 요소에 꺾은선 그래프 생성
-        var ctx = document.getElementById('myLineChart').getContext('2d');
-        var myLineChart = new Chart(ctx, {
-            type: 'line',
-            data: data,
-            options: options
-        });
-    </script>
 </body>
 </html>
