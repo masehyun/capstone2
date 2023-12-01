@@ -4,6 +4,9 @@ import os
 from werkzeug.utils import secure_filename
 from model import model_f
 import pymysql
+import Ground
+import input_slow
+
 
 db=pymysql.connect(
     host='localhost',
@@ -61,10 +64,28 @@ def upload_file():
         
         f.save('./static/assets/img/'+user_id+f.filename)
         file_name=user_id+f.filename
+        new_file_name='line'+user_id+f.filename
+        print('save')
+        #인공지능 모델 사용하기
+        video_path = './static/assets/img/'+file_name # 입력 동영상 파일 경로
+        output_path = './static/assets/img/'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
+        print('pathafter')
+        # 쭈현이꺼
+        #video_path = "C:\\Users\\eju20\\OneDrive\\simulation\\pro_1.mp4"  # 입력 동영상 파일 경로
+        #output_path = "C:\\Users\\eju20\\OneDrive\\simulation\\pro1_output.mp4"  # 출력 동영상 파일 경로
         
-        #딕셔너리 정의(모델에서 딕셔너리 형태로 받을예정)
+        slow_path = input_slow.slowmotion(video_path)
         grade=dict()
-        grade={'address':1,'takeback':170,'backswing':175,'top':1,'impact_eye':1,'impact_knee':1,'impact_foot':1}
+        print(grade)
+        print("slowpath:", slow_path)
+        
+        print("outputpath:",output_path)
+        grade=Ground.pose_drawing(slow_path, output_path)
+
+        print('afterpose')
+        #딕셔너리 정의(모델에서 받음)
+        
+    
         
         #코멘트 리스트. 나중에 웹으로 값 전송
         comment=list() 
