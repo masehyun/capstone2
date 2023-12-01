@@ -115,6 +115,7 @@
         </div>
     </div>
     <div id="accuracyLabel"></div>
+    <div id="accuracyComment"></div>
 
   </header>
   <div class="btn-container">
@@ -125,7 +126,9 @@
 <script>
       var accuracyLabelElement = document.getElementById("accuracyLabel");
     accuracyLabelElement.textContent =
-      "Takeback: " + "{{values[1]}}";
+      "Takeback: ";
+      accuracyComment.textContent =
+      "{{values[1]}}";
     </script>
   </body>
 </html>

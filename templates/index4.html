@@ -93,6 +93,7 @@
         </div>
     </div>
     <div id="accuracyLabel"></div>
+    <div id="accuracyComment"></div>
   </header>
   <section>
     <div class="masthead-content" style="text-align:center;">
@@ -106,7 +107,9 @@
 <script>
   var accuracyLabelElement = document.getElementById("accuracyLabel");
 accuracyLabelElement.textContent =
-  "Address: " + "{{values[0]}}";
+  "Address: ";
+  accuracyComment.textContent =
+      "{{values[0]}}";
 </script>
   </body>
 </html>
