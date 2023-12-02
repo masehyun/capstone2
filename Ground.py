@@ -89,6 +89,8 @@ def pose_drawing(video_path, output_path):
 # 페이스/기준선 라인 첫 지점
             # 페이스 작업을 위한 랜드마크
             head_center_x, head_center_y, ankle_center_x, ankle_center_y, radius,right_shoulder_y,left_ear_x= line_landmark(landmarks_dict, image_width, image_height)
+            
+
 
             #첫 프레임
             if is_first:
@@ -151,7 +153,7 @@ def pose_drawing(video_path, output_path):
 
 if __name__ == "__main__":
     video_path = './static/assets/img/사용자영상.mp4'  # 입력 동영상 파일 경로
-    output_path =  './static/assets/img/output_file4.mp4'  # 출력 동영상 파일 경로
+    output_path =  './static/assets/img/output_file4.mp4' # 출력 동영상 파일 경로
     # 쭈현이꺼
     #video_path = "C:\\Users\\eju20\\OneDrive\\simulation\\pro_1.mp4"  # 입력 동영상 파일 경로
     #output_path = "C:\\Users\\eju20\\OneDrive\\simulation\\pro1_output.mp4"  # 출력 동영상 파일 경로
