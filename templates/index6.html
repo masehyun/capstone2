@@ -1,51 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Golf Posture Feedback</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
-    <script
-      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Google fonts-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet"
-    />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link
-      href="{{ url_for('static', filename='css/styles.css') }}"
-      rel="stylesheet"
-    />
-    <style>
-      /* 전체 컨테이너 스타일 */
-      .container {
-        display: flex;
-      }
+<html lang="ko">
 
-      /* 동영상 영역 스타일 */
-      .video-container {
-        flex: 1; /* 동영상 영역이 가변적으로 늘어남 */
-        margin-right: 10px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Golf Posture Feedback</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Font Awesome icons (free version)-->
+  <script
+    src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+    crossorigin="anonymous"
+  ></script>
+  <!-- Google fonts-->
+  <link
+    href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+    rel="stylesheet"
+  />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link
+    href="{{ url_for('static', filename='css/styles.css') }}"
+    rel="stylesheet"
+  />
+  <style>
+    /* 전체 컨테이너 스타일 */
+    .container {
+      display: flex;
+      flex-direction: row; /* 수평으로 배치 */
+    }
 
-        /* 그래프 영역 스타일 */
-        .chart-container {
-            flex: 1; /* 그래프 영역이 가변적으로 늘어남 */
-            padding: 20px; /* 그래프 영역에 여백 추가 */
-        }
+    /* 동영상 영역 스타일 */
+    .video-container {
+      flex: 1.5; /* 동영상 영역이 가변적으로 늘어남 */
+      margin-right: 10px;
+    }
+    .video-container2 {
+      flex: 1.5; /* 동영상 영역이 가변적으로 늘어남 */
+      margin-left: 10px;
+    }
 
-        #accuracyLabel {
+    .button-container {
+      display: flex;
+    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: space-between;
+    margin-top: 65px;
+    margin-right: 40px;
+    }
+    .button2-container {
+      display: flex;
+    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: space-between;
+    margin-top: 65px;
+    margin-left: 40px;
+    }
+    .btn {
+      flex: 3%;
+      font-size:8px; /* 버튼의 48%만큼 차지하도록 조절 */
+    }
+    #accuracyLabel {
         text-align: center;
         margin-top: 20px;
         font-weight: bold;
@@ -55,63 +73,75 @@
       #acuuracyComment {
         text-align: center;
       }
-    </style>
-  </head>
-  <body id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-      <div class="container px-5">
-        <a class="navbar-brand navbar-" href="#page-top"
-          >Golf Posture Feedback</a
-        >
-      </div>
-    </nav>
-    <header class="masthead text-center text-black">
-      <div class="container">
-        <!-- 동영상 영역 -->
+      .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+      }
+      .arrow {
+        border: solid rgb(247, 244, 244);
+        border-width: 0 40px 40px 0;
+        display: inline-block;
+        padding: 40px;
+        font-size: 40px;
+      }
+      .left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+      }
+  </style>
+</head>
+
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container px-5">
+      <a class="navbar-brand navbar-" href="#page-top"
+        >Golf Posture Feedback</a>
+    </div>
+  </nav>
+  <header class="masthead text-center text-black">
+    <p style ="font-size : 60px; text-align: center; margin-bottom: 20px;">Back Swing</p> 
+    <div class="container">
+      <div class="button-container">
+        <!-- 사용자영상에 대한 버튼 -->
+        <a href="{{ url_for('fifth_page') }}"><i class="arrow left"></i></a>
+        </div>
+
+        <!-- 동영상 영역 (사용자영상) -->
         <div class="video-container">
           <!-- 동영상을 여기에 추가하세요 -->
           <iframe
             width="100%"
             height="350"
-            src="{{ url_for('static', filename='assets/img/'+file_name) }}"
+            src="{{ url_for('static', filename='assets/img/사용자영상.mp4') }}"
             frameborder="0"
             allowfullscreen
           ></iframe>
         </div>
 
-        <!-- 그래프 영역 -->
-        <!-- 동영상 영역 -->
-        <div class="video-container">
+        <!-- 동영상 영역 (테이크백 영상) -->
+        <div class="video-container2">
           <!-- 동영상을 여기에 추가하세요 -->
           <iframe
             width="100%"
             height="350"
-            src="{{ url_for('static', filename='assets/img/1234자세.mp4') }}"
+            src="{{ url_for('static', filename='assets/img/테이크백.mp4')}}"
             frameborder="0"
             allowfullscreen
           ></iframe>
         </div>
+        <div class="button2-container">
+        <!-- 테이크백 영상에 대한 버튼 -->
+        <a href="{{ url_for('seventh_page') }}"><i class="arrow right"></i></a>
+      </div>
     </div>
     <div id="accuracyLabel"></div>
     <div id="accuracyComment"></div>
   </header>
-  <section>
-    <div class="masthead-content" style="text-align:center;">
-      
-        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('fourth_page') }}">이전자세 피드백</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
-        </p>
-    </div>
-        </div>
-</section>
-  <section>
-    <div class="masthead-content" style="text-align:center;">
-      
-        <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ url_for('fourth_page') }}">다음자세 피드백</a> <!-- 여기에다가 다음페이지 넘기는 코드 추가-->
-        </p>
-    </div>
-        </div>
-</section>
+  <script>
 
+    var accuracyComment = document.getElementById("accuracyComment");
+    accuracyComment.textContent = "{{values[2]}}";
+  </script>
+</body>
 
-  </body>
 </html>

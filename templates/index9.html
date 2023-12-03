@@ -99,11 +99,11 @@
     </div>
   </nav>
   <header class="masthead text-center text-black">
-    <p style ="font-size : 60px; text-align: center; margin-bottom: 20px;">Address</p> 
+    <p style ="font-size : 60px; text-align: center; margin-bottom: 20px;">Impact(Knee&foot spacing)</p> 
     <div class="container">
       <div class="button-container">
         <!-- 사용자영상에 대한 버튼 -->
-        <a href="{{ url_for('third_page') }}"><i class="arrow left"></i></a>
+        <a href="{{ url_for('eighth_page') }}"><i class="arrow left"></i></a>
         </div>
 
         <!-- 동영상 영역 (사용자영상) -->
@@ -131,7 +131,7 @@
         </div>
         <div class="button2-container">
         <!-- 테이크백 영상에 대한 버튼 -->
-        <a href="{{ url_for('fifth_page') }}"><i class="arrow right"></i></a>
+        <a href="{{ url_for('third_page') }}"><i class="arrow right"></i></a>
       </div>
     </div>
     <div id="accuracyLabel"></div>
@@ -140,7 +140,7 @@
   <script>
 
     var accuracyComment = document.getElementById("accuracyComment");
-    accuracyComment.textContent = "{{values[0]}}";
+    accuracyComment.textContent = "{{values[5]}}";
   </script>
 </body>
 

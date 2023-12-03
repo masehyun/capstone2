@@ -42,6 +42,19 @@ def third_page():
 @app.route("/fifth")
 def fifth_page():
     return render_template('index5.html',file_name=file_name,values=comment)
+@app.route("/sixth")
+def sixth_page():
+    return render_template('index6.html',file_name=file_name,values=comment)
+@app.route("/seventh")
+def seventh_page():
+    return render_template('index7.html',file_name=file_name,values=comment)
+@app.route("/eighth")
+def eighth_page():
+    return render_template('index8.html',file_name=file_name,values=comment)
+@app.route("/ninth")
+def ninth_page():
+    return render_template('index9.html',file_name=file_name,values=comment)
+    
 #두번째페이지를 렌더링
 @app.route("/login")
 def second_page():#id 받기
