@@ -140,11 +140,11 @@
     var correctAnswers = 5; // 맞춘 개수
     var totalQuestions = 7; // 전체 수
     accuracyLabelElement.textContent =
-      "정확도: " + {{total}} + "/" + totalQuestions;
+      "정확도: " + '{{xvalues[4]}}' + "/" + totalQuestions;
     accuracyComment.textContent =
       totalQuestions +
       "개 동작 중 " +
-      {{total}} +
+      '{{xvalues[4]}}' +
       "개 동작이 평가기준에 적합합니다.";
     </script>
 

@@ -83,8 +83,8 @@ def upload_file():
         #인공지능 모델 사용하기
         # video_path = './static/assets/img/'+file_name # 입력 동영상 파일 경로
         # output_path = './static/assets/img/'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
-        video_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+file_name# 입력 동영상 파일 경로
-        output_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
+        video_path = 'C:\\Users\\asdfg\\OneDrive\\바탕 화면\\올빼미\\static\\assets\\img\\'+file_name# 입력 동영상 파일 경로
+        output_path = 'C:\\Users\\asdfg\\OneDrive\\바탕 화면\\올빼미\\static\\assets\\img\\'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
         print(video_path)
         print(output_path)
         # 쭈현이꺼
