@@ -131,7 +131,7 @@ def upload_file():
                     comment.append('임팩트에서 볼을 끝까지 봐야해요!.')
                 elif(value==-1):
                     comment.append(' ')    
-                    
+                    zxx
             #임팩트
             #임팩트 시선
             elif(key=='impact_eye'):
