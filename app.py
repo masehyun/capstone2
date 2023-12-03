@@ -38,7 +38,7 @@ def fourth_page():
     return render_template('index4.html',file_name=file_name,values=comment)
 @app.route("/third")
 def third_page():
-    return render_template('index3.html',xvalues=xtotal,tryn=tryn,file_name=file_name)
+    return render_template('index3.html',xvalues=xtotal,tryn=tryn,file_name=file_name,total=total)
 @app.route("/fifth")
 def fifth_page():
     return render_template('index5.html',file_name=file_name,values=comment)
@@ -66,7 +66,7 @@ def second_page():#id 받기
 #두번째 화면에서 업로드 버튼을 누를때
 @app.route('/upload',methods=['POST'])
 def upload_file():
-    global comment,xtotal,tryn,file_name
+    global comment,xtotal,tryn,file_name,new_file_name,total
     if request.method=='POST':
         f=request.files['file']
         print(f.filename)
