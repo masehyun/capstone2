@@ -35,25 +35,25 @@ def home():
     return render_template('index.html') 
 @app.route("/fourth")
 def fourth_page():
-    return render_template('index4.html',file_name=file_name,values=comment)
+    return render_template('index4.html',file_name=file_name,values=comment,new_file_name=new_file_name)
 @app.route("/third")
 def third_page():
     return render_template('index3.html',xvalues=xtotal,tryn=tryn,file_name=file_name,total=total)
 @app.route("/fifth")
 def fifth_page():
-    return render_template('index5.html',file_name=file_name,values=comment)
+    return render_template('index5.html',file_name=file_name,values=comment,new_file_name=new_file_name)
 @app.route("/sixth")
 def sixth_page():
-    return render_template('index6.html',file_name=file_name,values=comment)
+    return render_template('index6.html',file_name=file_name,values=comment,new_file_name=new_file_name)
 @app.route("/seventh")
 def seventh_page():
-    return render_template('index7.html',file_name=file_name,values=comment)
+    return render_template('index7.html',file_name=file_name,values=comment,new_file_name=new_file_name)
 @app.route("/eighth")
 def eighth_page():
-    return render_template('index8.html',file_name=file_name,values=comment)
+    return render_template('index8.html',file_name=file_name,values=comment,new_file_name=new_file_name)
 @app.route("/ninth")
 def ninth_page():
-    return render_template('index9.html',file_name=file_name,values=comment)
+    return render_template('index9.html',file_name=file_name,values=comment,new_file_name=new_file_name)
     
 #두번째페이지를 렌더링
 @app.route("/login")
@@ -83,13 +83,16 @@ def upload_file():
         #인공지능 모델 사용하기
         # video_path = './static/assets/img/'+file_name # 입력 동영상 파일 경로
         # output_path = './static/assets/img/'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
-        video_path = 'C:\\Users\\asdfg\\OneDrive\\바탕 화면\\올빼미\\static\\assets\\img\\'+file_name# 입력 동영상 파일 경로
-        output_path = 'C:\\Users\\asdfg\\OneDrive\\바탕 화면\\올빼미\\static\\assets\\img\\'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
+       
+        video_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+file_name# 입력 동영상 파일 경로
+        output_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
         print(video_path)
         print(output_path)
         # 쭈현이꺼
         #video_path = "C:\\Users\\eju20\\OneDrive\\simulation\\pro_1.mp4"  # 입력 동영상 파일 경로
         #output_path = "C:\\Users\\eju20\\OneDrive\\simulation\\pro1_output.mp4"  # 출력 동영상 파일 경로
+        #video_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+file_name# 입력 동영상 파일 경로
+        #output_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
         
         slow_path = slowmotion(video_path)
         grade=dict()
@@ -258,7 +261,7 @@ def upload_file():
         
         
         #딕셔너리 값을 html로 넘김
-        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn,file_name=file_name,total=total)
+        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn,file_name=file_name,total=total,new_file_name=new_file_name)
     else:
         return render_template('index2.html')
     
