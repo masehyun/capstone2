@@ -66,7 +66,7 @@ def second_page():#id 받기
 #두번째 화면에서 업로드 버튼을 누를때
 @app.route('/upload',methods=['POST'])
 def upload_file():
-    global comment,xtotal,tryn,file_name,new_file_name,total
+    global comment,xtotal,tryn,file_name,new_file_name,total,problem
     if request.method=='POST':
         f=request.files['file']
         print(f.filename)
@@ -106,6 +106,7 @@ def upload_file():
         #딕셔너리 정의(모델에서 받음)
         #코멘트 리스트. 나중에 웹으로 값 전송
         comment=list() 
+        problem=list()
 
         #점수 리스트.
         sc=[20,40,60,80,90,100,10]
@@ -124,21 +125,27 @@ def upload_file():
             if(key=='address'):
                 if(value==-1):
                     comment.append('발의 각도가 좁아요 어깨만큼 넓혀주세요ㅜㅜ.')
+                    problem.append('발의 너비')
                 elif(value==1 ):
                     comment.append('어드레스의 발 사이의 거리가 좋아요^^.')
                     total+=1
+                    problem.append('문제가 없습니다.')
                 elif(value==0):
                     comment.append('발 사이의 거리가 너무 멀어요ㅜㅜ.')
+                    problem.append('발의 너비')
           
                     
             elif(key=='takeback'): #채 수평(손목좌표)과 팔 쭉 펴진지 나중에
                 if(value==1):
                     comment.append('테이크 어웨이 구간에서 팔이 잘 펴졌어요ㅎㅎ')
                     total+=1
+                    problem.append('발의 너비')
                 elif(value<165):
                     comment.append('테이크 어웨이 구간에서 팔을 더 펴주세요ㅜㅜ')
+                    problem.append('발의 너비')
                 elif(value==-1):
                     comment.append(' ')  
+                    problem.append('발의 너비')
                  
             #뱌ㅐㄱ스윙
             elif(key=='backswing'): 
@@ -146,19 +153,25 @@ def upload_file():
                 if(value==1):
                     comment.append('백스윙 구간에서 팔이 잘 펴졌어요ㅎㅎ')
                     total+=1
+                    problem.append('발의 너비')
                 elif(value<155):
                     comment.append('백스윙 구간에서 팔을 더 펴주세요ㅜㅜ')
+                    problem.append('발의 너비')
                 elif(value==-1):
                     comment.append(' ')    
+                    problem.append('발의 너비')
                    
             elif(key=='top'): #백스윙에서 팔 위치
                 if(value==1):
                     comment.append('볼을 끝까지 보는 시선 좋아요^^.')
                     total+=1
+                    problem.append('발의 너비')
                 elif(value==0):
                     comment.append('임팩트에서 볼을 끝까지 봐야해요!.')
+                    problem.append('발의 너비')
                 elif(value==-1):
                     comment.append(' ')    
+                    problem.append('발의 너비')
                     
             #임팩트
             #임팩트 시선
@@ -166,30 +179,39 @@ def upload_file():
                 if(value==1):
                     comment.append('임팩트 시 시선처리 좋아요!')
                     total+=1
+                    problem.append('발의 너비')
                 elif(value==0):
                     comment.append('임팩트때 공을 끝까지 봐주세요!')
+                    problem.append('발의 너비')
                 elif(value==-1):
                     comment.append(' ')   
+                    problem.append('발의 너비')
             
             #임펙트 무릎
             elif(key=='impact_knee'):
                 if(value==1):
                     comment.append('좋아요!')
                     total+=1
+                    problem.append('발의 너비')
                 elif(value==0):
                     comment.append('임패트 시 무릎이 붙게 해주세요!')
+                    problem.append('발의 너비')
                 elif(value==-1):
-                    comment.append(' ')           
+                    comment.append(' ') 
+                    problem.append('발의 너비')          
                     
             #임펙트 발거리
             elif(key=='impact_foot'):
                 if(value==-1):
                     comment.append('발의 각도가 좁아요 어깨만큼 넓혀주세요ㅜㅜ.')
+                    problem.append('발의 너비')
                 elif(value==1):
                     comment.append('어드레스의 발 사이의 거리가 좋아요^^.')
                     total+=1
+                    problem.append('발의 너비')
                 elif(value==0):
                     comment.append('발 사이의 거리가 너무 멀어요ㅜㅜ.')
+                    problem.append('발의 너비')
         #넘기는 리스트 comment의 값은 총 7개
             # 어드레스 한개
             # 테이크어웨이 1개
@@ -261,7 +283,8 @@ def upload_file():
         
         
         #딕셔너리 값을 html로 넘김
-        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn,file_name=file_name,total=total,new_file_name=new_file_name)
+        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn,file_name=file_name,total=total,problem=problem) 
+        #problem은 주 문제
     else:
         return render_template('index2.html')
     
