@@ -72,6 +72,7 @@
       }
       #acuuracyComment {
         text-align: center;
+        font-size: 45px;
       }
       .right {
         transform: rotate(-45deg);
@@ -146,7 +147,8 @@
   <script>
 
     var accuracyComment = document.getElementById("accuracyComment");
-    accuracyComment.textContent = "TIP: {{values[1]}}";
+    accuracyComment.innerHTML  = "TIP:&nbsp;&nbsp;&nbsp;{{values[1][0]}}<br>{{values[1][1]}}<br>{{values[1][2]}}";
+    accuracyComment.style.fontSize = "25px";
   </script>
 </body>
 

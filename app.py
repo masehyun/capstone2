@@ -35,25 +35,25 @@ def home():
     return render_template('index.html') 
 @app.route("/fourth")
 def fourth_page():
-    return render_template('index4.html',file_name=file_name,values=comment,new_file_name=new_file_name)
+    return render_template('index4.html',file_name=file_name,values=comment,problems=problem)
 @app.route("/third")
 def third_page():
-    return render_template('index3.html',xvalues=xtotal,tryn=tryn,file_name=file_name,total=total)
+    return render_template('index3.html',xvalues=xtotal,tryn=tryn,file_name=file_name,total=total,problems=problem)
 @app.route("/fifth")
 def fifth_page():
-    return render_template('index5.html',file_name=file_name,values=comment,new_file_name=new_file_name)
+    return render_template('index5.html',file_name=file_name,values=comment,new_file_name=new_file_name,problems=problem)
 @app.route("/sixth")
 def sixth_page():
-    return render_template('index6.html',file_name=file_name,values=comment,new_file_name=new_file_name)
+    return render_template('index6.html',file_name=file_name,values=comment,new_file_name=new_file_name,problems=problem)
 @app.route("/seventh")
 def seventh_page():
-    return render_template('index7.html',file_name=file_name,values=comment,new_file_name=new_file_name)
+    return render_template('index7.html',file_name=file_name,values=comment,new_file_name=new_file_name,problems=problem)
 @app.route("/eighth")
 def eighth_page():
-    return render_template('index8.html',file_name=file_name,values=comment,new_file_name=new_file_name)
+    return render_template('index8.html',file_name=file_name,values=comment,new_file_name=new_file_name,problems=problem)
 @app.route("/ninth")
 def ninth_page():
-    return render_template('index9.html',file_name=file_name,values=comment,new_file_name=new_file_name)
+    return render_template('index9.html',file_name=file_name,values=comment,new_file_name=new_file_name,problems=problem)
     
 #두번째페이지를 렌더링
 @app.route("/login")
@@ -124,94 +124,109 @@ def upload_file():
         for key,value in grade.items():
             if(key=='address'):
                 if(value==-1):
-                    comment.append('발의 각도가 좁아요 어깨만큼 넓혀주세요ㅜㅜ.')
-                    problem.append('발의 너비')
+                    comment.append(["어드레스 시 어깨 폭 정도의 넓은 발 간격을 유지해야합니다.",
+                                  '현재 발 간격에서 조금 더 넓게 유지해주세요.',
+                                   '이런 올바른 발 간격을 유지하여야 스윙의 안정성과 균형이 향상됩니다.'])
+                    problem.append('주 문제 ) 발 간격 좁음 문제')
                 elif(value==1 ):
-                    comment.append('어드레스의 발 사이의 거리가 좋아요^^.')
+                    comment.append(['어드레스의 발 사이의 거리가 좋아요^^.',' ',' '])
                     total+=1
-                    problem.append('문제가 없습니다.')
+                    problem.append('S U C C E S S !')
                 elif(value==0):
-                    comment.append('발 사이의 거리가 너무 멀어요ㅜㅜ.')
-                    problem.append('발의 너비')
+                    comment.append(['어드레스 시 어깨 폭 정도의 발 간격을 유지해야합니다.',
+                                   '현재 발 간격에서 조금 더 좁게 유지해주세요.',
+                                   '이런 올바른 발 간격을 유지하여야 스윙의 안정성과 균형이 향상됩니다'])
+                    problem.append('주 문제 ) 발 간격 넓음 문제')
           
                     
             elif(key=='takeback'): #채 수평(손목좌표)과 팔 쭉 펴진지 나중에
                 if(value==1):
-                    comment.append('테이크 어웨이 구간에서 팔이 잘 펴졌어요ㅎㅎ')
+                    comment.append(['테이크 어웨이 구간에서 팔이 잘 펴졌어요ㅎㅎ',' ',' '])
                     total+=1
-                    problem.append('발의 너비')
-                elif(value<165):
-                    comment.append('테이크 어웨이 구간에서 팔을 더 펴주세요ㅜㅜ')
-                    problem.append('발의 너비')
+                    problem.append('S U C C E S S !')
+                elif(value<=165):
+                    comment.append(['테이크어웨이 시 팔이 구부러져 있습니다.',
+                    '팔의 각도가 좁으면 스윙 동작이 제한되어 힘 전달이 어렵습니다.',
+                    '팔을 조금 더 펴준다면 스윙의 흐름이 더 자연스러워지며 공을 더 효과적으로 조절할 수 있게 됩니다.'])
+                    problem.append('주 문제 ) 팔 굽힘 문제')
                 elif(value==-1):
-                    comment.append(' ')  
-                    problem.append('발의 너비')
+                    comment.append(['자세가 인식되지않습니다.','올바른 자세로 찍어주세요.',' '])  
+                    problem.append(' ')
                  
             #뱌ㅐㄱ스윙
             elif(key=='backswing'): 
                 
                 if(value==1):
-                    comment.append('백스윙 구간에서 팔이 잘 펴졌어요ㅎㅎ')
+                    comment.append(['백스윙 구간에서 팔이 잘 펴졌어요ㅎㅎ',' ',' '])
                     total+=1
-                    problem.append('발의 너비')
-                elif(value<155):
-                    comment.append('백스윙 구간에서 팔을 더 펴주세요ㅜㅜ')
-                    problem.append('발의 너비')
+                    problem.append('S U C C E S S !')
+                elif(value<=155):
+                    comment.append(['테이크어웨이 시 팔이 구부러져 있습니다.',
+                                   '팔의 각도가 좁으면 스윙 동작이 제한되어 힘 전달이 어렵습니다.',
+                                   '팔을 조금 더 펴준다면 스윙의 흐름이 더 자연스러워지며 공을 더 효과적으로 조절할 수 있게 됩니다.'])
+                    problem.append('주 문제 ) 팔 굽힘 문제')
                 elif(value==-1):
-                    comment.append(' ')    
-                    problem.append('발의 너비')
+                    comment.append(['자세가 인식되지않습니다.','올바른 자세로 찍어주세요.',' '])    
+                    problem.append(' ')
                    
             elif(key=='top'): #백스윙에서 팔 위치
                 if(value==1):
-                    comment.append('볼을 끝까지 보는 시선 좋아요^^.')
+                    comment.append(['볼을 끝까지 보는 시선 좋아요^^.',' '])
                     total+=1
-                    problem.append('발의 너비')
+                    problem.append('S U C C E S S !')
                 elif(value==0):
-                    comment.append('임팩트에서 볼을 끝까지 봐야해요!.')
-                    problem.append('발의 너비')
+                    comment.append(['탑 구간에서 팔이 충분히 올라가지 못 하였습니다.',
+                    '스윙 동작 중 팔을 조금 더 높게 들어올린다면 스윙의 일관성과 정확도를 향상시킬 수 있습니다.'])
+                    problem.append('주 문제 ) 팔이 충분히 들어오지 않는 문제')
                 elif(value==-1):
-                    comment.append(' ')    
-                    problem.append('발의 너비')
+                    comment.append(['자세가 인식되지않습니다.','올바른 자세로 찍어주세요.'])    
+                    problem.append(' ')
                     
             #임팩트
             #임팩트 시선
             elif(key=='impact_eye'):
                 if(value==1):
-                    comment.append('임팩트 시 시선처리 좋아요!')
+                    comment.append(['임팩트 시 시선처리 좋아요!',' ',' '])
                     total+=1
-                    problem.append('발의 너비')
+                    problem.append('S U C C E S S !')
                 elif(value==0):
-                    comment.append('임팩트때 공을 끝까지 봐주세요!')
-                    problem.append('발의 너비')
+                    comment.append(['어드레스에서 임팩트 구간 동안 얼굴의 움직임을 최소화해야합니다.',
+                    '또한 임팩트 시 얼굴이 공을 보고 있어야합니다.', 
+                    '이런 정확한 시선은 공을 확실하게 타격하고 원하는 방향으로 보내는 데 도움이 됩니다.'
+                    ])
+                    problem.append('주 문제  ) 어드레스 - 임팩트 구간에서 얼굴 움직임 문제')
                 elif(value==-1):
-                    comment.append(' ')   
-                    problem.append('발의 너비')
+                    comment.append(['자세가 인식되지않습니다.','올바른 자세로 찍어주세요.',' '])   
+                    problem.append(' ')
             
             #임펙트 무릎
             elif(key=='impact_knee'):
                 if(value==1):
-                    comment.append('좋아요!')
+                    comment.append(['좋아요!',' '])
                     total+=1
-                    problem.append('발의 너비')
+                    problem.append('S U C C E S S !')
                 elif(value==0):
-                    comment.append('임패트 시 무릎이 붙게 해주세요!')
-                    problem.append('발의 너비')
+                    comment.append(['임팩트 과정에서 무릎의 간격이 넓습니다.', 
+                    '두 무릎을 서로 가깝게 유지하여 특정한 동작이나 힘 전달을 높일 수 있습니다.'])
+                    problem.append('주 문제 ) 무릎 간격 문제')
                 elif(value==-1):
-                    comment.append(' ') 
+                    comment.append(['자세가 인식되지않습니다.','올바른 자세로 찍어주세요.']) 
                     problem.append('발의 너비')          
                     
             #임펙트 발거리
             elif(key=='impact_foot'):
                 if(value==-1):
-                    comment.append('발의 각도가 좁아요 어깨만큼 넓혀주세요ㅜㅜ.')
-                    problem.append('발의 너비')
+                    comment.append(['임팩트에서 피니시로 가는 과정에서 발의 간격이 넓습니다.',
+                    '어드레스 구간에서의  발 간격을 최대한 유지해야 몸의 밸런스가 안정적이게 됩니다.'])
+                    problem.append('주 문제 ) 발 간격 좁음 문제')
                 elif(value==1):
-                    comment.append('어드레스의 발 사이의 거리가 좋아요^^.')
+                    comment.append(['어드레스의 발 사이의 거리가 좋아요^^.',' '])
                     total+=1
-                    problem.append('발의 너비')
+                    problem.append('S U C C E S S !')
                 elif(value==0):
-                    comment.append('발 사이의 거리가 너무 멀어요ㅜㅜ.')
-                    problem.append('발의 너비')
+                    comment.append(['임팩트에서 피니시로 가는 과정에서 발의 간격이 조금 좁습니다.',
+                    '어드레스 구간에서의  발 간격을 최대한 유지해야 몸의 밸런스가 안정적이게 됩니다.'])
+                    problem.append('주 문제 )발 간격 넓음 문제')
         #넘기는 리스트 comment의 값은 총 7개
             # 어드레스 한개
             # 테이크어웨이 1개
@@ -220,8 +235,10 @@ def upload_file():
             
        
         
-        for i in range(7):
-            print(comment[i])
+        # for i in range(7):
+        #     for j in range(3):
+        #         if comment[i][j]:
+        #             print(comment[i][j])
         
         # 데이터베이스에서 이전 코멘트 불러오기
         xcomment=list()
@@ -280,10 +297,10 @@ def upload_file():
            print(xtotal)
            print(tryn)  
         
-        
+        print(problem)
         
         #딕셔너리 값을 html로 넘김
-        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn,file_name=file_name,total=total,problem=problem) 
+        return render_template('index3.html',values=comment,xvalues=xtotal,tryn=tryn,file_name=file_name,total=total,problems=problem) 
         #problem은 주 문제
     else:
         return render_template('index2.html')

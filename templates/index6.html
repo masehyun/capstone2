@@ -144,7 +144,8 @@
   <script>
 
     var accuracyComment = document.getElementById("accuracyComment");
-    accuracyComment.textContent = "TIP: {{values[2]}}";
+    accuracyComment.innerHTML = "TIP:&nbsp;&nbsp;&nbsp;{{values[2][0]}}<br>{{values[2][1]}}<br>{{values[2][2]}}";
+    accuracyComment.style.fontSize = "25px"; 
   </script>
 </body>
 
