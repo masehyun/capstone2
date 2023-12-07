@@ -143,9 +143,11 @@
     <div id="accuracyComment"></div>
   </header>
   <script>
+  var accuracyComment = document.getElementById("accuracyComment");
+  accuracyComment.innerHTML = "TIP:   {{values[0]}}";
+  accuracyComment.style.fontSize = "45px";  // 필요에 따라 폰트 크기를 조절하세요.
 
-    var accuracyComment = document.getElementById("accuracyComment");
-    accuracyComment.textContent = "TIP: {{values[0]}}";
+
   </script>
 </body>
 
