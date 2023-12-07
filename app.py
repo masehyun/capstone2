@@ -132,7 +132,7 @@ def upload_file():
           
                     
             elif(key=='takeback'): #채 수평(손목좌표)과 팔 쭉 펴진지 나중에
-                if(value>=165):
+                if(value==1):
                     comment.append('테이크 어웨이 구간에서 팔이 잘 펴졌어요ㅎㅎ')
                     total+=1
                 elif(value<165):
@@ -143,7 +143,7 @@ def upload_file():
             #뱌ㅐㄱ스윙
             elif(key=='backswing'): 
                 
-                if(value>=155):
+                if(value==1):
                     comment.append('백스윙 구간에서 팔이 잘 펴졌어요ㅎㅎ')
                     total+=1
                 elif(value<155):
