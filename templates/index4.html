@@ -38,6 +38,7 @@
     /* 동영상 영역 스타일 */
     .video-container {
       flex: 1.5; /* 동영상 영역이 가변적으로 늘어남 */
+      position : relative;
       margin-right: 10px;
     }
     .video-container2 {
@@ -64,15 +65,15 @@
       font-size:8px; /* 버튼의 48%만큼 차지하도록 조절 */
     }
     #accuracyLabel {
-        text-align: center;
+        text-align: left;
+        margin-left: 320px;
         margin-top: 20px;
-        font-weight: bold;
-        font-size: 24px; /* 텍스트 크기 조절 */
-        color: rgb(75, 192, 192); /* 텍스트 색상 지정 */
+        font-weight: 900;
+        font-size: 30px; /* 텍스트 크기 조절 */
+        color: rgb(246, 245, 215) /* 텍스트 색상 지정 */
       }
       #acuuracyComment {
-        text-align: center;
-        font-size: 45px;
+        text-align: left;
       }
       .right {
         transform: rotate(-45deg);
@@ -86,6 +87,8 @@
         padding: 40px;
         font-size: 40px;
       }
+    
+
       .left {
         transform: rotate(135deg);
         -webkit-transform: rotate(135deg);
@@ -137,17 +140,17 @@
       </div>
     </div>
     <br>
-    <br>
-    <br>
     <div id="accuracyLabel"></div>
     <div id="accuracyComment"></div>
   </header>
   <script>
-    var accuracyComment = document.getElementById("accuracyComment");
-    accuracyComment.innerHTML = "TIP:&nbsp;&nbsp;&nbsp;{{values[0][0]}}<br>{{values[0][1]}}<br>{{values[0][2]}}";
-    accuracyComment.style.fontSize = "25px";  // 필요에 따라 폰트 크기를 조절하세요.
-  
-  
+  var accuracyLabel = document.getElementById("accuracyLabel");
+  accuracyLabel.innerHTML = "{{problems[0]}}<br>";
+  var accuracyComment = document.getElementById("accuracyComment");
+  accuracyComment.innerHTML = "{{values[0][0]}}<br>{{values[0][1]}}<br>{{values[0][2]}}";
+  accuracyComment.style.fontSize = "20px";  // 필요에 따라 폰트 크기를 조절하세요.
+  accuracyComment.style.marginLeft = "320px";
+  accuracyComment.style.textAlign ="left";
   </script>
 </body>
 

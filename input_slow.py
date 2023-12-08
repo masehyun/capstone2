@@ -15,8 +15,9 @@ def slowmotion(input_path) :
     delay = int(1000 / (fps * slow_motion_factor))  # 밀리세컨드 단위의 딜레이
 
     # 비디오 출력을 위한 VideoWriter 객체를 생성합니다.
-    output_path = ('C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\자세2.mp4')
+    output_path = ('C:\\Users\\asdfg\\OneDrive\\바탕 화면\\올빼미\\static\\assets\\img\\자세2.mp4')
     #output_path = ('C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\자세2.mp4')
+    #C:\\Users\\asdfg\\OneDrive\\바탕화면\\올빼미\\static\\assets\\img\\
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(output_path, fourcc, fps, (int(cap.get(3)), int(cap.get(4))))
 

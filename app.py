@@ -84,8 +84,8 @@ def upload_file():
         # video_path = './static/assets/img/'+file_name # 입력 동영상 파일 경로
         # output_path = './static/assets/img/'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
        
-        video_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+file_name# 입력 동영상 파일 경로
-        output_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
+        video_path = 'C:\\Users\\asdfg\\OneDrive\\바탕 화면\\올빼미\\static\\assets\\img\\'+file_name# 입력 동영상 파일 경로
+        output_path = 'C:\\Users\\asdfg\\OneDrive\\바탕 화면\\올빼미\\static\\assets\\img\\'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
         print(video_path)
         print(output_path)
         # 쭈현이꺼
@@ -93,6 +93,7 @@ def upload_file():
         #output_path = "C:\\Users\\eju20\\OneDrive\\simulation\\pro1_output.mp4"  # 출력 동영상 파일 경로
         #video_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+file_name# 입력 동영상 파일 경로
         #output_path = 'C:\\Users\\SAMSUNG\\Desktop\\CAPS\\static\\assets\\img\\'+new_file_name  # 출력 동영상(사용자에 줄 그은거) 파일 경로
+        #C:\\Users\\asdfg\\OneDrive\\바탕화면\\올빼미\\static\\assets\\img\\
         
         slow_path = slowmotion(video_path)
         grade=dict()
@@ -141,7 +142,7 @@ def upload_file():
                     
             elif(key=='takeback'): #채 수평(손목좌표)과 팔 쭉 펴진지 나중에
                 if(value==1):
-                    comment.append(['테이크 어웨이 구간에서 팔이 잘 펴졌어요ㅎㅎ',' ',' '])
+                    comment.append(['테이크 어웨이 구간에서 팔이 잘 펴졌어요',' ',' '])
                     total+=1
                     problem.append('S U C C E S S !')
                 elif(value<=165):
@@ -157,7 +158,7 @@ def upload_file():
             elif(key=='backswing'): 
                 
                 if(value==1):
-                    comment.append(['백스윙 구간에서 팔이 잘 펴졌어요ㅎㅎ',' ',' '])
+                    comment.append(['백스윙 구간에서 팔이 잘 펴졌어요',' ',' '])
                     total+=1
                     problem.append('S U C C E S S !')
                 elif(value<=155):

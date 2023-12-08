@@ -64,15 +64,19 @@
       font-size:8px; /* 버튼의 48%만큼 차지하도록 조절 */
     }
     #accuracyLabel {
-        text-align: center;
+        text-align: left;
         margin-top: 20px;
-        font-weight: bold;
-        font-size: 24px; /* 텍스트 크기 조절 */
-        color: rgb(75, 192, 192); /* 텍스트 색상 지정 */
+        margin-left: 320px;
+        font-weight: 900;
+        font-size: 30px; /* 텍스트 크기 조절 */
+        color: rgb(246, 245, 215); /* 텍스트 색상 지정 */
       }
       #acuuracyComment {
-        text-align: center;
+        text-align: left;
       }
+      .tip-text {
+      color: rgb(0, 0, 0); /* TIP 텍스트의 색상을 여기서 지정하세요. */
+    }
       .right {
         transform: rotate(-45deg);
         -webkit-transform: rotate(-45deg);
@@ -89,6 +93,9 @@
         transform: rotate(135deg);
         -webkit-transform: rotate(135deg);
       }
+      .feedback-text{
+      font-size : 20px;
+    }
   </style>
 </head>
 
@@ -136,16 +143,17 @@
       </div>
     </div>
     <br>
-    <br>
-    <br>
     <div id="accuracyLabel"></div>
     <div id="accuracyComment"></div>
   </header>
   <script>
-
+    var accuracyLabel = document.getElementById("accuracyLabel");
+    accuracyLabel.innerHTML = "{{problems[4]}}";
     var accuracyComment = document.getElementById("accuracyComment");
-    accuracyComment.innerHTML = "TIP:&nbsp;&nbsp;&nbsp;{{values[4][0]}}<br>{{values[4][1]}}<br>{{values[4][2]}}";
-    accuracyComment.style.fontSize = "25px"; 
+    accuracyComment.innerHTML = "{{values[4][0]}}<br>{{values[4][1]}}<br>{{values[4][2]}}";
+    accuracyComment.style.fontSize = "20px"; 
+    accuracyComment.style.marginLeft = "320px";
+    accuracyComment.style.textAlign ="left";
   </script>
 </body>
 

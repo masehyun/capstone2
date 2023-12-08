@@ -63,16 +63,16 @@
       flex: 3%;
       font-size:8px; /* 버튼의 48%만큼 차지하도록 조절 */
     }
+    .tip-text {
+      color: rgb(0, 0, 0); /* TIP 텍스트의 색상을 여기서 지정하세요. */
+    }
     #accuracyLabel {
-        text-align: center;
+        text-align: left;
         margin-top: 20px;
-        font-weight: bold;
-        font-size: 24px; /* 텍스트 크기 조절 */
-        color: rgb(75, 192, 192); /* 텍스트 색상 지정 */
-      }
-      #acuuracyComment {
-        text-align: center;
-        font-size: 20px;
+        margin-left: 320px;
+        font-weight: 900;
+        font-size: 30px; /* 텍스트 크기 조절 */
+        color: rgb(246, 245, 215); /* 텍스트 색상 지정 */
       }
       .right {
         transform: rotate(-45deg);
@@ -90,6 +90,23 @@
         transform: rotate(135deg);
         -webkit-transform: rotate(135deg);
       }
+      #accuracy2 {
+   text-align: left;
+   margin-left: 320px;
+   font-size: 20px; /* 텍스트 크기 조절 */
+ }
+ #accuracy1 {
+  text-align: left;
+  margin-top: 20px;
+  margin-left: 320px;
+  font-weight: 900;
+  font-size: 30px; /* 텍스트 크기 조절 */
+  color: rgb(246, 245, 215); /* 텍스트 색상 지정 */
+ }
+ .feedback-text{
+      font-size : 20px;
+    }
+
   </style>
 </head>
 
@@ -137,16 +154,23 @@
       </div>
     </div>
     <br>
-    <br>
-    <br>
     <div id="accuracyLabel"></div>
     <div id="accuracyComment"></div>
+    <div id="accuracy1"></div>
+    <div id="accuracy2"></div>
   </header>
   <script>
-
+    var accuracyLabel = document.getElementById("accuracyLabel");
+    accuracyLabel.innerHTML = "{{problems[5]}}";
     var accuracyComment = document.getElementById("accuracyComment");
-    accuracyComment.innerHTML = "TIP:&nbsp;&nbsp;&nbsp;<br>(knee)<br>{{values[5][0]}}<br>{{values[5][1]}}<br>(foot)<br>{{values[6][0]}}<br>{{values[6][1]}}";
-    accuracyComment.style.fontSize = "25px"; 
+    accuracyComment.innerHTML = "(knee)<br>{{values[5][0]}}<br>{{values[5][1]}}";
+    var accuracy1 = document.getElementById("accuracy1");
+    accuracy1.innerHTML ="{{problems[6]}}";
+    var accuracy2 = document.getElementById("accuracy2");
+    accuracy2.innerHTML = "(foot)<br>{{values[6][0]}}<br>{{values[6][1]}}";
+    accuracyComment.style.fontSize = "20px";
+    accuracyComment.style.marginLeft = "320px";
+    accuracyComment.style.textAlign ="left"; 
   </script>
 </body>
 
